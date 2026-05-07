@@ -1,0 +1,14 @@
+{
+  "name": "OmniBrand AI",
+  "description": "Premium AI-powered Content Management System for brand identity and automated content generation.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "AI Content Generation",
+    "Brand Management",
+    "Asset Library",
+    "Social Media Scheduling"
+  ]
+}
