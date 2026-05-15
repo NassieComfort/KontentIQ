@@ -38,7 +38,7 @@ export function Dashboard() {
           <div className="relative flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="space-y-3">
               <h1 className="text-3xl md:text-4xl font-display font-bold leading-tight text-white dark:text-white">
-                Good morning, Sarah 👋
+                Good morning, Nassie 👋
               </h1>
               <p className="text-indigo-100 text-base max-w-xl">
                 Your AI agents generated <span className="text-white font-bold underline decoration-white/30">24 new posts</span> and optimized 3 campaigns today.

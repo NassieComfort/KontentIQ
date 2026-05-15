@@ -24,13 +24,13 @@ import { Separator } from '../ui/separator';
 
 const menuItems = [
   { icon: LayoutDashboard, label: 'Dashboard', path: '/dashboard' },
-  { icon: Briefcase, label: 'Brands', path: '/brands' },
-  { icon: PenTool, label: 'Content Studio', path: '/content/create' },
-  { icon: Bot, label: 'AI Agents', path: '/ai-agents' },
-  { icon: ImageIcon, label: 'Assets', path: '/assets' },
-  { icon: Calendar, label: 'Calendar', path: '/calendar' },
-  { icon: BarChart3, label: 'Analytics', path: '/analytics' },
-  { icon: Settings, label: 'Settings', path: '/settings' },
+  { icon: Briefcase, label: 'Brands', path: '/dashboard/brands' },
+  { icon: PenTool, label: 'Content Studio', path: '/dashboard/content/create' },
+  { icon: Bot, label: 'AI Agents', path: '/dashboard/ai-agents' },
+  { icon: ImageIcon, label: 'Assets', path: '/dashboard/assets' },
+  { icon: Calendar, label: 'Calendar', path: '/dashboard/calendar' },
+  { icon: BarChart3, label: 'Analytics', path: '/dashboard/analytics' },
+  { icon: Settings, label: 'Settings', path: '/dashboard/settings' },
 ];
 
 export function Sidebar() {
@@ -48,7 +48,7 @@ export function Sidebar() {
     >
       {/* Logo Section */}
       <div className="h-20 flex items-center px-8">
-        <Link to="/" className="flex items-center gap-3 overflow-hidden">
+        <Link to="/dashboard" className="flex items-center gap-3 overflow-hidden">
           <div className="w-8 h-8 rounded-lg bg-[#6D5EF5] flex items-center justify-center shrink-0 shadow-lg shadow-indigo-200">
             <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
           </div>
@@ -104,11 +104,11 @@ export function Sidebar() {
         )}>
           <Avatar className="w-10 h-10 border border-white dark:border-slate-800 shrink-0 shadow-sm">
             <AvatarImage src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" />
-            <AvatarFallback className="bg-indigo-200 text-[#6D5EF5] font-bold">SM</AvatarFallback>
+            <AvatarFallback className="bg-indigo-200 text-[#6D5EF5] font-bold">NC</AvatarFallback>
           </Avatar>
           {sidebarOpen && (
             <div className="flex flex-col overflow-hidden">
-              <span className="text-sm font-bold truncate">Sarah Miller</span>
+              <span className="text-sm font-bold truncate">Nassie Comfort</span>
               <span className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Pro Workspace</span>
             </div>
           )}

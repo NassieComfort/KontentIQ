@@ -49,7 +49,7 @@ export function Brands() {
                 </Button>
               </div>
               <div>
-                <Link to={`/brands/${brand.id}`} className="hover:text-[#6D5EF5] transition-colors">
+                <Link to={`/dashboard/brands/${brand.id}`} className="hover:text-[#6D5EF5] transition-colors">
                   <h3 className="text-xl font-bold font-display leading-tight">{brand.name}</h3>
                 </Link>
                 <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mt-1">{brand.industry}</p>
@@ -73,7 +73,7 @@ export function Brands() {
                     </Avatar>
                   ))}
                </div>
-               <Link to={`/brands/${brand.id}`}>
+               <Link to={`/dashboard/brands/${brand.id}`}>
                 <Button variant="ghost" size="sm" className="text-xs font-bold text-slate-400 hover:text-[#6D5EF5] group-hover:text-[#6D5EF5] transition-colors gap-1">
                   View Brand <ArrowUpRight className="w-3 h-3" />
                 </Button>

@@ -31,7 +31,7 @@ export function SingleBrand() {
              <img src={brand.logo} alt={brand.name} className="w-full h-full object-cover" />
           </div>
           <div className="space-y-1 pt-2">
-            <Link to="/brands" className="text-xs font-semibold text-primary flex items-center gap-1 hover:underline mb-1">
+            <Link to="/dashboard/brands" className="text-xs font-semibold text-primary flex items-center gap-1 hover:underline mb-1">
               <ChevronLeft className="w-3 h-3" /> Back to Brands
             </Link>
             <h1 className="text-4xl font-bold font-display">{brand.name}</h1>

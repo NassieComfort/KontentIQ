@@ -80,16 +80,16 @@ export function Settings() {
                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                           <div className="space-y-2">
                              <Label className="text-xs uppercase font-bold text-muted-foreground">First Name</Label>
-                             <Input defaultValue="Sarah" className="rounded-xl bg-muted/30 border-transparent h-11" />
+                             <Input defaultValue="Nassie" className="rounded-xl bg-muted/30 border-transparent h-11" />
                           </div>
                           <div className="space-y-2">
                              <Label className="text-xs uppercase font-bold text-muted-foreground">Last Name</Label>
-                             <Input defaultValue="Nelson" className="rounded-xl bg-muted/30 border-transparent h-11" />
+                             <Input defaultValue="Comfort" className="rounded-xl bg-muted/30 border-transparent h-11" />
                           </div>
                        </div>
                        <div className="space-y-2">
                           <Label className="text-xs uppercase font-bold text-muted-foreground">Email Address</Label>
-                          <Input defaultValue="sarah@kontentiq.ai" className="rounded-xl bg-muted/30 border-transparent h-11" />
+                          <Input defaultValue="nassie@kontentiq.ai" className="rounded-xl bg-muted/30 border-transparent h-11" />
                        </div>
                     </div>
                  </div>
