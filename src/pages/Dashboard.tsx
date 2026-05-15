@@ -141,7 +141,7 @@ export function Dashboard() {
           <h3 className="font-bold text-lg mb-4">AI Activity</h3>
           <div className="space-y-4 overflow-y-auto pr-2">
             {[
-              { user: 'Nova AI', text: 'Instagram Post Ready', time: '2 mins ago', color: 'bg-indigo-100 text-indigo-500' },
+              { user: 'KontentIQ', text: 'Instagram Post Ready', time: '2 mins ago', color: 'bg-indigo-100 text-indigo-500' },
               { user: 'HealthFlow', text: 'Blog Draft Generated', time: '45 mins ago', color: 'bg-emerald-100 text-emerald-500' },
               { user: 'Visual Designer', text: 'New Asset Tagged', time: '1 hr ago', color: 'bg-amber-100 text-amber-500' },
               { user: 'System', text: '5 Posts Scheduled', time: '3 hrs ago', color: 'bg-slate-100 text-slate-500' }

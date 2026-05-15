@@ -66,7 +66,7 @@ export function ContentStudio() {
         <div className="flex items-center gap-3">
            <div className="hidden md:flex flex-col items-end">
               <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Current Model</span>
-              <span className="text-xs font-bold text-[#6D5EF5]">Nova-Pro-Large</span>
+              <span className="text-xs font-bold text-[#6D5EF5]">KontentIQ-Pro-Large</span>
            </div>
            <Badge variant="outline" className="px-3 py-1.5 gap-2 bg-indigo-50 dark:bg-indigo-900/20 border-indigo-100 dark:border-indigo-800 text-[#6D5EF5] font-bold rounded-xl shadow-sm">
               <BrainCircuit className="w-4 h-4" />
@@ -223,7 +223,7 @@ export function ContentStudio() {
                    <Sparkles className="absolute inset-0 m-auto w-8 h-8 text-[#6D5EF5] animate-pulse" />
                  </div>
                  <div className="text-center space-y-2">
-                   <h3 className="text-xl font-bold font-display">Nova AI is thinking...</h3>
+                   <h3 className="text-xl font-bold font-display">KontentIQ is thinking...</h3>
                    <div className="flex gap-1 justify-center">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#6D5EF5] animate-bounce [animation-delay:-0.3s]" />
                       <span className="w-1.5 h-1.5 rounded-full bg-[#6D5EF5] animate-bounce [animation-delay:-0.15s]" />
@@ -266,7 +266,7 @@ export function ContentStudio() {
                           <div className="prose prose-slate dark:prose-invert max-w-none">
                              <h2 className="text-3xl font-bold mb-6 font-display leading-tight">Earth Day 2026: Designing the Future of Sustenance 🌍</h2>
                              <p className="text-xl leading-relaxed text-slate-500 font-medium tracking-tight">
-                                Sustainable design isn't just a trend—it's the core of Nova AI. This Earth Day, we're unveiling our new Eco-Optimizer workflow. 
+                                Sustainable design isn't just a trend—it's the core of KontentIQ. This Earth Day, we're unveiling our new Eco-Optimizer workflow. 
                                 By reducing computational overhead by 40%, we're making AI greener than ever before.
                              </p>
                              <div className="bg-indigo-50/50 dark:bg-indigo-900/10 p-8 rounded-3xl italic border border-indigo-100 dark:border-indigo-900/30 mt-8 text-[#6D5EF5] font-bold text-lg leading-relaxed shadow-sm">
@@ -275,7 +275,7 @@ export function ContentStudio() {
                              <div className="mt-10 flex gap-2">
                                 <Badge variant="outline" className="rounded-full border-slate-100 text-slate-400 font-bold px-4 py-1">#SustainableAI</Badge>
                                 <Badge variant="outline" className="rounded-full border-slate-100 text-slate-400 font-bold px-4 py-1">#EcoDesign</Badge>
-                                <Badge variant="outline" className="rounded-full border-slate-100 text-slate-400 font-bold px-4 py-1">#NovaAI</Badge>
+                                <Badge variant="outline" className="rounded-full border-slate-100 text-slate-400 font-bold px-4 py-1">#KontentIQ</Badge>
                              </div>
                           </div>
                        </div>

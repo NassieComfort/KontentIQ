@@ -132,7 +132,7 @@ export function AIAgents() {
                             <div className="h-px bg-slate-50 dark:bg-slate-800" />
                             <div className="flex justify-between items-center text-sm">
                                <span className="text-slate-500 font-medium">Model Backend</span>
-                               <span className="font-bold text-[#6D5EF5]">Nova-Pro-Large</span>
+                               <span className="font-bold text-[#6D5EF5]">KontentIQ-Pro-Large</span>
                             </div>
                          </div>
                       </div>

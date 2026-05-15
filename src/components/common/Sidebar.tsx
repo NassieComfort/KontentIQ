@@ -60,7 +60,7 @@ export function Sidebar() {
                 exit={{ opacity: 0, x: -10 }}
                 className="font-display font-bold text-xl tracking-tight uppercase"
               >
-                Nova AI
+                KontentIQ
               </motion.span>
             )}
           </AnimatePresence>

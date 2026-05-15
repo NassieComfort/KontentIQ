@@ -89,7 +89,7 @@ export function Settings() {
                        </div>
                        <div className="space-y-2">
                           <Label className="text-xs uppercase font-bold text-muted-foreground">Email Address</Label>
-                          <Input defaultValue="sarah@novadesign.ai" className="rounded-xl bg-muted/30 border-transparent h-11" />
+                          <Input defaultValue="sarah@kontentiq.ai" className="rounded-xl bg-muted/30 border-transparent h-11" />
                        </div>
                     </div>
                  </div>

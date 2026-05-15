@@ -6,7 +6,7 @@ import { Card, CardContent, CardFooter, CardHeader } from '../components/ui/card
 import { Badge } from '../components/ui/badge';
 import { mockBrands } from '../mock/data';
 import { Link } from 'react-router-dom';
-import { Avatar, AvatarFallback, AvatarGroup } from '../components/ui/avatar';
+import { Avatar, AvatarFallback } from '../components/ui/avatar';
 
 export function Brands() {
   return (

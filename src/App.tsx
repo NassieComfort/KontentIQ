@@ -3,7 +3,10 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { DashboardLayout } from './layouts/DashboardLayout';
 import { Toaster } from './components/ui/sonner';
 
-// Lazy load pages for better performance
+// Pages
+import { LandingPage } from './pages/LandingPage';
+import { LoginPage } from './pages/LoginPage';
+import { SignupPage } from './pages/SignupPage';
 import { Dashboard } from './pages/Dashboard';
 import { Brands } from './pages/Brands';
 import { SingleBrand } from './pages/SingleBrand';
@@ -21,9 +24,14 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<DashboardLayout />}>
-            <Route index element={<Navigate to="/dashboard" replace />} />
-            <Route path="dashboard" element={<Dashboard />} />
+          {/* Public Routes */}
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+
+          {/* Dashboard Routes */}
+          <Route path="/dashboard" element={<DashboardLayout />}>
+            <Route index element={<Dashboard />} />
             <Route path="brands" element={<Brands />} />
             <Route path="brands/:id" element={<SingleBrand />} />
             <Route path="content/create" element={<ContentStudio />} />

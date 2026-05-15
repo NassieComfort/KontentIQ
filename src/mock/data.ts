@@ -3,14 +3,14 @@ import { Brand, GeneratedContent, AIAgent, Asset, AnalyticsData } from '../types
 export const mockBrands: Brand[] = [
   {
     id: '1',
-    name: 'Nova AI',
+    name: 'KontentIQ',
     industry: 'AI SaaS',
     tone: ['Modern', 'Playful', 'Confident'],
     logo: 'https://images.unsplash.com/photo-1614850523296-d8c1af93d400?w=100&h=100&fit=crop',
     team: [{ name: 'Sarah' }, { name: 'Alex' }],
     lastActivity: '2 hours ago',
     description: 'Next-gen AI assistant for creative workflows.',
-    website: 'nova.ai',
+    website: 'kontentiq.ai',
   },
   {
     id: '2',
@@ -59,7 +59,7 @@ export const mockAgents: AIAgent[] = [
     status: 'active',
     icon: 'Share2',
     description: 'Optimizes engagement across social platforms.',
-    lastTask: 'Generated 5 X posts for Nova AI',
+    lastTask: 'Generated 5 X posts for KontentIQ',
   },
   {
     id: 'agent_2',
