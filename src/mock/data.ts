@@ -1,4 +1,6 @@
 import { Brand, GeneratedContent, AIAgent, Asset, AnalyticsData } from '../types';
+import brandLogo from '../assets/favicon.png';
+import brandAsset from '../assets/image.png.jpeg';
 
 export const mockBrands: Brand[] = [
   {
@@ -6,7 +8,7 @@ export const mockBrands: Brand[] = [
     name: 'KontentIQ',
     industry: 'AI SaaS',
     tone: ['Modern', 'Playful', 'Confident'],
-    logo: 'https://images.unsplash.com/photo-1614850523296-d8c1af93d400?w=100&h=100&fit=crop',
+    logo: brandLogo,
     team: [{ name: 'Nassie' }, { name: 'Comfort' }],
     lastActivity: '2 hours ago',
     description: 'Next-gen AI assistant for creative workflows.',
@@ -87,7 +89,7 @@ export const mockAssets: Asset[] = [
     brandId: '1',
     name: 'Primary Logo.png',
     type: 'logo',
-    url: 'https://images.unsplash.com/photo-1614850523296-d8c1af93d400?w=400&h=400&fit=crop',
+    url: brandAsset,
     size: '1.2MB',
     createdAt: '2026-04-15',
     tags: ['logo', 'primary', 'png'],
