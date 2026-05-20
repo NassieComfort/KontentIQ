@@ -4,9 +4,11 @@ import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
 import { ArrowRight, Mail, Lock } from 'lucide-react';
+import { useAuthStore } from '../store/useAuthStore';
 
 export function LoginPage() {
   const navigate = useNavigate();
+  const { user, setUser } = useAuthStore();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -35,8 +37,13 @@ export function LoginPage() {
     if (!validateForm()) return;
 
     setLoading(true);
-    // Simulate API call
+    // Simulate API call - for now, create a demo user with the entered email
     setTimeout(() => {
+      setUser({
+        id: Date.now().toString(),
+        fullName: 'User',
+        email: formData.email,
+      });
       setLoading(false);
       navigate('/dashboard');
     }, 1000);

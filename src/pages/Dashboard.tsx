@@ -17,6 +17,7 @@ import { mockAnalytics, mockContent } from '../mock/data';
 import { Badge } from '../components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '../components/ui/avatar';
 import { cn } from '../lib/utils';
+import { useAuthStore } from '../store/useAuthStore';
 
 const stats = [
   { label: 'Total Brands', value: '12', change: '+2', icon: Users, color: 'bg-blue-500' },
@@ -26,6 +27,16 @@ const stats = [
 ];
 
 export function Dashboard() {
+  const { user } = useAuthStore();
+  
+  const getGreeting = () => {
+    const hour = new Date().getHours();
+    if (hour < 12) return 'Good morning';
+    if (hour < 18) return 'Good afternoon';
+    return 'Good evening';
+  };
+
+  const userName = user?.fullName || 'User';
   return (
     <div className="space-y-6">
       {/* Hero Section */}
@@ -38,7 +49,7 @@ export function Dashboard() {
           <div className="relative flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="space-y-3">
               <h1 className="text-3xl md:text-4xl font-display font-bold leading-tight text-white dark:text-white">
-                Good morning, Nassie 👋
+                {getGreeting()}, {userName} 👋
               </h1>
               <p className="text-indigo-100 text-base max-w-xl">
                 Your AI agents generated <span className="text-white font-bold underline decoration-white/30">24 new posts</span> and optimized 3 campaigns today.
@@ -157,7 +168,7 @@ export function Dashboard() {
               </div>
             ))}
           </div>
-          <button className="mt-auto pt-4 text-[10px] font-bold text-[#6D5EF5] uppercase tracking-widest text-center hover:underline transition-all">
+          <button className="mt-auto pt-4 text-[10px] font-bold text-[#6D5EF5] uppercase tracking-widest text-center">
             View History
           </button>
         </div>

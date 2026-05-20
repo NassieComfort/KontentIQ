@@ -4,9 +4,11 @@ import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
 import { ArrowRight, Mail, Lock, User } from 'lucide-react';
+import { useAuthStore } from '../store/useAuthStore';
 
 export function SignupPage() {
   const navigate = useNavigate();
+  const { setUser } = useAuthStore();
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -47,6 +49,11 @@ export function SignupPage() {
     setLoading(true);
     // Simulate API call
     setTimeout(() => {
+      setUser({
+        id: Date.now().toString(),
+        fullName: formData.fullName,
+        email: formData.email,
+      });
       setLoading(false);
       navigate('/dashboard');
     }, 1000);
@@ -105,7 +112,7 @@ export function SignupPage() {
                   id="fullName"
                   name="fullName"
                   type="text"
-                  placeholder="Nassie Comfort"
+                  placeholder="Full Name"
                   value={formData.fullName}
                   onChange={handleChange}
                   className="bg-slate-800 border-slate-700 text-white placeholder:text-slate-500"

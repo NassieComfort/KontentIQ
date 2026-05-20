@@ -11,12 +11,15 @@ import {
   DropdownMenuTrigger 
 } from '../ui/dropdown-menu';
 import { useUIStore } from '../../store/useUIStore';
+import { useAuthStore } from '../../store/useAuthStore';
 import { mockBrands } from '../../mock/data';
 
 export function Navbar() {
   const { selectedBrandId, setSelectedBrandId } = useUIStore();
+  const { user } = useAuthStore();
   
   const selectedBrand = mockBrands.find(b => b.id === selectedBrandId) || mockBrands[0];
+  const userInitial = user?.fullName?.charAt(0).toUpperCase() || 'U';
 
   return (
     <header className="h-16 border-b border-slate-100 dark:border-slate-800 bg-white/80 dark:bg-background/80 backdrop-blur-md sticky top-0 z-40 flex items-center justify-between px-8 shrink-0">
@@ -83,8 +86,10 @@ export function Navbar() {
 
         <div className="w-px h-6 bg-slate-100 dark:bg-slate-800 mx-2" />
 
-        <div className="flex items-center gap-2 p-1 pl-2 hover:bg-slate-50 rounded-full cursor-pointer transition-colors">
-          <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#6D5EF5] to-[#A78BFA] shadow-sm" />
+        <div className="flex items-center gap-2 p-1 pl-2">
+          <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#6D5EF5] to-[#A78BFA] shadow-sm flex items-center justify-center text-white text-xs font-bold">
+            {userInitial}
+          </div>
           <ChevronDown className="w-4 h-4 text-slate-400" />
         </div>
       </div>
