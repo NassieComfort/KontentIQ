@@ -16,8 +16,7 @@ import {
   Sun
 } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-import { useUIStore } from '../../store/useUIStore';
-import { cn } from '../../lib/utils';
+import { useUIStore } from '../../store/useUIStore';import { useAuthStore } from '../../store/useAuthStore';import { cn } from '../../lib/utils';
 import { Button } from '../ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { Separator } from '../ui/separator';
@@ -37,6 +36,7 @@ const menuItems = [
 
 export function Sidebar() {
   const { sidebarOpen, setSidebarOpen, theme, setTheme } = useUIStore();
+  const { user } = useAuthStore();
   const location = useLocation();
 
   return (
@@ -105,12 +105,14 @@ export function Sidebar() {
           !sidebarOpen && "justify-center"
         )}>
           <Avatar className="w-10 h-10 border border-white dark:border-slate-800 shrink-0 shadow-sm">
-            <AvatarImage src={profileImage} />
-            <AvatarFallback className="bg-indigo-200 text-[#6D5EF5] font-bold">NC</AvatarFallback>
+            <AvatarImage src={user?.avatarUrl || profileImage} />
+            <AvatarFallback className="bg-indigo-200 text-[#6D5EF5] font-bold">
+              {user?.fullName?.split(' ').map((word) => word.charAt(0)).join('').slice(0, 2).toUpperCase() || 'NC'}
+            </AvatarFallback>
           </Avatar>
           {sidebarOpen && (
             <div className="flex flex-col overflow-hidden">
-              <span className="text-sm font-bold truncate">Nassie Comfort</span>
+              <span className="text-sm font-bold truncate">{user?.fullName || 'Nassie Comfort'}</span>
               <span className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Pro Workspace</span>
             </div>
           )}

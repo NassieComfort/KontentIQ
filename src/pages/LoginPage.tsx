@@ -31,6 +31,15 @@ export function LoginPage() {
     return Object.keys(newErrors).length === 0;
   };
 
+  const getNameFromEmail = (email: string) => {
+    const username = email.split('@')[0];
+    return username
+      .split(/[._-]/)
+      .filter(Boolean)
+      .map((part) => part[0].toUpperCase() + part.slice(1))
+      .join(' ') || 'User';
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -39,10 +48,12 @@ export function LoginPage() {
     setLoading(true);
     // Simulate API call - for now, create a demo user with the entered email
     setTimeout(() => {
+      const existingUser = user?.email === formData.email ? user : null;
       setUser({
-        id: Date.now().toString(),
-        fullName: 'User',
+        id: existingUser?.id ?? Date.now().toString(),
+        fullName: existingUser?.fullName ?? getNameFromEmail(formData.email),
         email: formData.email,
+        avatarUrl: existingUser?.avatarUrl,
       });
       setLoading(false);
       navigate('/dashboard');

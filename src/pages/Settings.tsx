@@ -1,29 +1,74 @@
-import React from 'react';
-import { 
-  User, 
-  Settings2, 
-  ShieldCheck, 
-  CreditCard, 
-  Bell, 
-  Globe, 
-  Key, 
-  Database,
-  ArrowRight,
-  ExternalLink,
-  ChevronRight,
+import React, { useEffect, useState } from 'react';
+import {
+  User,
+  Settings2,
+  ShieldCheck,
+  CreditCard,
+  Bell,
+  Globe,
+  Key,
   Sparkles,
   Zap
 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { Switch } from '../components/ui/switch';
 import { Label } from '../components/ui/label';
 import { Input } from '../components/ui/input';
 import { Separator } from '../components/ui/separator';
 import { Badge } from '../components/ui/badge';
+import { useAuthStore } from '../store/useAuthStore';
 
 export function Settings() {
+  const { user, setUser } = useAuthStore();
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [avatarUrl, setAvatarUrl] = useState<string | undefined>(user?.avatarUrl);
+  const [saving, setSaving] = useState(false);
+
+  useEffect(() => {
+    if (user) {
+      const [first = '', ...rest] = user.fullName.split(' ');
+      setFirstName(first);
+      setLastName(rest.join(' '));
+      setEmail(user.email);
+      setAvatarUrl(user.avatarUrl);
+    }
+  }, [user]);
+
+  const handleAvatarChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (typeof reader.result === 'string') {
+        setAvatarUrl(reader.result);
+      }
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleSave = () => {
+    if (!firstName.trim() || !email.trim()) return;
+    setSaving(true);
+
+    const updatedUser = {
+      id: user?.id ?? Date.now().toString(),
+      fullName: `${firstName} ${lastName}`.trim(),
+      email: email.trim(),
+      avatarUrl,
+    };
+
+    setTimeout(() => {
+      setUser(updatedUser);
+      setSaving(false);
+    }, 400);
+  };
+
+  const displayInitials = `${firstName?.charAt(0) || 'U'}${lastName?.charAt(0) || ''}`.toUpperCase() || 'U';
+
   return (
     <div className="space-y-8 max-w-6xl mx-auto">
       <div>
@@ -69,27 +114,55 @@ export function Settings() {
                     <div className="relative group">
                        <div className="w-24 h-24 rounded-3xl bg-gradient-to-tr from-primary to-accent p-1">
                           <div className="w-full h-full rounded-[20px] bg-background flex items-center justify-center overflow-hidden border-2 border-background">
-                             <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop" className="w-full h-full object-cover" />
+                             {avatarUrl ? (
+                               <img src={avatarUrl} alt="Profile" className="w-full h-full object-cover" />
+                             ) : (
+                               <div className="flex items-center justify-center w-full h-full bg-slate-900 text-white text-xl font-bold">
+                                 {displayInitials}
+                               </div>
+                             )}
                           </div>
                        </div>
-                       <button className="absolute -bottom-2 -right-2 p-2 bg-primary text-white rounded-xl shadow-lg border-2 border-background hover:scale-110 transition-transform">
+                       <input
+                         id="avatar-upload"
+                         type="file"
+                         accept="image/*"
+                         className="hidden"
+                         onChange={handleAvatarChange}
+                       />
+                       <label
+                         htmlFor="avatar-upload"
+                         className="absolute -bottom-2 -right-2 p-2 bg-primary text-white rounded-xl shadow-lg border-2 border-background cursor-pointer hover:scale-110 transition-transform"
+                       >
                           <Settings2 className="w-3 h-3" />
-                       </button>
+                       </label>
                     </div>
                     <div className="space-y-4 flex-1 w-full">
                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                           <div className="space-y-2">
                              <Label className="text-xs uppercase font-bold text-muted-foreground">First Name</Label>
-                             <Input defaultValue="Nassie" className="rounded-xl bg-muted/30 border-transparent h-11" />
+                             <Input
+                               value={firstName}
+                               onChange={(e) => setFirstName(e.target.value)}
+                               className="rounded-xl bg-muted/30 border-transparent h-11"
+                             />
                           </div>
                           <div className="space-y-2">
                              <Label className="text-xs uppercase font-bold text-muted-foreground">Last Name</Label>
-                             <Input defaultValue="Comfort" className="rounded-xl bg-muted/30 border-transparent h-11" />
+                             <Input
+                               value={lastName}
+                               onChange={(e) => setLastName(e.target.value)}
+                               className="rounded-xl bg-muted/30 border-transparent h-11"
+                             />
                           </div>
                        </div>
                        <div className="space-y-2">
                           <Label className="text-xs uppercase font-bold text-muted-foreground">Email Address</Label>
-                          <Input defaultValue="nassie@kontentiq.ai" className="rounded-xl bg-muted/30 border-transparent h-11" />
+                          <Input
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            className="rounded-xl bg-muted/30 border-transparent h-11"
+                          />
                        </div>
                     </div>
                  </div>
@@ -117,8 +190,28 @@ export function Settings() {
                  </div>
 
                  <div className="pt-4 flex justify-end gap-3">
-                    <Button variant="ghost" className="rounded-xl">Cancel</Button>
-                    <Button className="rounded-xl bg-primary px-8">Save Changes</Button>
+                    <Button
+                      variant="ghost"
+                      className="rounded-xl"
+                      onClick={() => {
+                        if (user) {
+                          const [first = '', ...rest] = user.fullName.split(' ');
+                          setFirstName(first);
+                          setLastName(rest.join(' '));
+                          setEmail(user.email);
+                          setAvatarUrl(user.avatarUrl);
+                        }
+                      }}
+                    >
+                      Cancel
+                    </Button>
+                    <Button
+                      className="rounded-xl bg-primary px-8"
+                      onClick={handleSave}
+                      disabled={saving}
+                    >
+                      {saving ? 'Saving...' : 'Save Changes'}
+                    </Button>
                  </div>
               </CardContent>
            </Card>
