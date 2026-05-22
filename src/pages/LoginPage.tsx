@@ -176,14 +176,15 @@ export function LoginPage() {
             </div>
 
             {/* Signup Link */}
-            <Button
-              type="button"
-              onClick={() => navigate('/signup')}
-              variant="outline"
-              className="w-full border-slate-600 text-white hover:bg-slate-800 py-6 text-lg"
-            >
-              Create Account
-            </Button>
+            <div className="w-full text-center py-6">
+              <button
+                type="button"
+                onClick={() => navigate('/signup')}
+                className="text-white text-lg font-semibold hover:text-blue-300 transition-colors"
+              >
+                Create Account
+              </button>
+            </div>
           </div>
         </div>
       </div>

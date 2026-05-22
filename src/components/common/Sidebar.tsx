@@ -21,7 +21,7 @@ import { Button } from '../ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { Separator } from '../ui/separator';
 import logoImage from '../../assets/logo.png.ico';
-import profileImage from '../../assets/image.png.jpeg';
+import profileImage from '../../assets/Avatar.jpg';
 
 const menuItems = [
   { icon: LayoutDashboard, label: 'Dashboard', path: '/dashboard' },

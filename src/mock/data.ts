@@ -1,6 +1,6 @@
 import { Brand, GeneratedContent, AIAgent, Asset, AnalyticsData } from '../types';
 import brandLogo from '../assets/favicon.png';
-import brandAsset from '../assets/image.png.jpeg';
+import brandAsset from '../assets/Avatar.jpg';
 
 export const mockBrands: Brand[] = [
   {
