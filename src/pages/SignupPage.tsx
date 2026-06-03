@@ -15,7 +15,6 @@ export function SignupPage() {
     password: '',
     confirmPassword: '',
   });
-  const [avatarUrl, setAvatarUrl] = useState<string | undefined>();
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(false);
 
@@ -54,7 +53,6 @@ export function SignupPage() {
         id: Date.now().toString(),
         fullName: formData.fullName,
         email: formData.email,
-        avatarUrl,
       });
       setLoading(false);
       navigate('/dashboard');
@@ -74,19 +72,6 @@ export function SignupPage() {
         [name]: ''
       }));
     }
-  };
-
-  const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = () => {
-      if (typeof reader.result === 'string') {
-        setAvatarUrl(reader.result);
-      }
-    };
-    reader.readAsDataURL(file);
   };
 
   return (
@@ -113,33 +98,7 @@ export function SignupPage() {
               <p className="text-slate-400">Join Kontentiq and start managing your brands with AI</p>
             </div>
 
-            {/* Form */}
             <form onSubmit={handleSubmit} className="space-y-5">
-              {/* Avatar Upload */}
-              <div className="space-y-2">
-                <Label className="text-slate-300">Profile Picture (optional)</Label>
-                <div className="flex items-center gap-3">
-                  <div className="h-16 w-16 rounded-full overflow-hidden bg-slate-800 border border-slate-700">
-                    {avatarUrl ? (
-                      <img src={avatarUrl} alt="Avatar preview" className="h-full w-full object-cover" />
-                    ) : (
-                      <div className="flex h-full w-full items-center justify-center text-sm text-slate-400">
-                        Upload
-                      </div>
-                    )}
-                  </div>
-                  <label className="inline-flex cursor-pointer items-center rounded-xl border border-slate-700 bg-slate-900 px-4 py-2 text-sm text-white hover:bg-slate-800">
-                    <input
-                      type="file"
-                      accept="image/*"
-                      className="hidden"
-                      onChange={handleAvatarChange}
-                    />
-                    Choose Image
-                  </label>
-                </div>
-              </div>
-
               {/* Full Name */}
               <div className="space-y-2">
                 <Label htmlFor="fullName" className="text-slate-300">
