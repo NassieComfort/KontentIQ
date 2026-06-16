@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { useEffect } from 'react';
+import { useUIStore } from './store/useUIStore';
 import { DashboardLayout } from './layouts/DashboardLayout';
 import { Toaster } from './components/ui/sonner';
 
@@ -20,6 +22,14 @@ import { Settings } from './pages/Settings';
 const queryClient = new QueryClient();
 
 export default function App() {
+  const { theme } = useUIStore();
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+    root.classList.toggle('dark', theme === 'dark');
+    root.classList.toggle('light', theme === 'light');
+  }, [theme]);
+
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>

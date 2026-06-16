@@ -95,8 +95,9 @@ export function LoginPage() {
           <div className="space-y-8">
             {/* Header */}
             <div className="text-center space-y-2">
-              <h1 className="text-3xl font-bold text-white">Welcome Back</h1>
+              <h1 className="text-3xl font-bold text-white font-display">Welcome Back</h1>
               <p className="text-slate-400">Sign in to access your Kontentiq dashboard</p>
+              <p className="text-sm text-slate-500">Sign in with your email to continue to your workspace.</p>
             </div>
 
             {/* Form */}
@@ -160,7 +161,7 @@ export function LoginPage() {
                 disabled={loading}
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white py-6 text-lg font-semibold"
               >
-                {loading ? 'Signing In...' : 'Sign In'}
+               {loading ? 'Signing In...' : 'Sign In'}
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </form>

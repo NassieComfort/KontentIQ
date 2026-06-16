@@ -1,9 +1,9 @@
-import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 interface UIState {
-  theme: 'light' | 'dark';
-  setTheme: (theme: 'light' | 'dark') => void;
+  theme: "light" | "dark";
+  setTheme: (theme: "light" | "dark") => void;
   sidebarOpen: boolean;
   setSidebarOpen: (open: boolean) => void;
   selectedBrandId: string | null;
@@ -13,11 +13,16 @@ interface UIState {
 export const useUIStore = create<UIState>()(
   persist(
     (set) => ({
-      theme: 'light',
+      theme: "light",
       setTheme: (theme) => {
         const root = window.document.documentElement;
-        root.classList.remove('light', 'dark');
-        root.classList.add(theme);
+        if (theme === "dark") {
+          root.classList.add("dark");
+          root.classList.remove("light");
+        } else {
+          root.classList.add("light");
+          root.classList.remove("dark");
+        }
         set({ theme });
       },
       sidebarOpen: true,
@@ -26,7 +31,11 @@ export const useUIStore = create<UIState>()(
       setSelectedBrandId: (id) => set({ selectedBrandId: id }),
     }),
     {
-      name: 'ui-storage',
-    }
-  )
+      name: "ui-storage",
+      partialize: (state) => ({
+        theme: state.theme,
+        selectedBrandId: state.selectedBrandId,
+      }),
+    },
+  ),
 );

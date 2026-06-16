@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   LayoutDashboard, 
@@ -15,8 +15,10 @@ import {
   Moon,
   Sun
 } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
-import { useUIStore } from '../../store/useUIStore';import { useAuthStore } from '../../store/useAuthStore';import { cn } from '../../lib/utils';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useUIStore } from '../../store/useUIStore';
+import { useAuthStore } from '../../store/useAuthStore';
+import { cn } from '../../lib/utils';
 import { Button } from '../ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { Separator } from '../ui/separator';
@@ -36,8 +38,15 @@ const menuItems = [
 
 export function Sidebar() {
   const { sidebarOpen, setSidebarOpen, theme, setTheme } = useUIStore();
-  const { user } = useAuthStore();
+  const { user, logout } = useAuthStore();
   const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!sidebarOpen) {
+      setSidebarOpen(true);
+    }
+  }, []);
 
   return (
     <motion.aside
@@ -138,6 +147,10 @@ export function Sidebar() {
           variant="ghost"
           size="sm"
           className={cn("w-full justify-start gap-3 rounded-xl text-destructive hover:text-destructive hover:bg-destructive/10", !sidebarOpen && "justify-center px-0")}
+          onClick={() => {
+            logout();
+            navigate('/login');
+          }}
         >
           <LogOut className="w-5 h-5 shrink-0" />
           {sidebarOpen && <span>Log Out</span>}

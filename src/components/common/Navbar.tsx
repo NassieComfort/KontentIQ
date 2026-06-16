@@ -12,13 +12,13 @@ import {
 } from '../ui/dropdown-menu';
 import { useUIStore } from '../../store/useUIStore';
 import { useAuthStore } from '../../store/useAuthStore';
-import { mockBrands } from '../../mock/data';
+import { useBrandStore } from '../../store/useBrandStore';
 
 export function Navbar() {
   const { selectedBrandId, setSelectedBrandId } = useUIStore();
   const { user } = useAuthStore();
-  
-  const selectedBrand = mockBrands.find(b => b.id === selectedBrandId) || mockBrands[0];
+  const brands = useBrandStore((state) => state.brands);
+  const selectedBrand = brands.find((b) => b.id === selectedBrandId) || brands[0] || { id: '', name: 'Brand' };
   const userInitial = user?.fullName?.charAt(0).toUpperCase() || 'U';
 
   return (
@@ -38,7 +38,7 @@ export function Navbar() {
           <DropdownMenuContent align="start" className="w-[220px] rounded-2xl p-2 shadow-premium border-slate-100">
             <DropdownMenuLabel className="text-[10px] uppercase tracking-widest text-slate-400 font-bold px-2 py-1.5">Switch Brand</DropdownMenuLabel>
             <DropdownMenuSeparator className="bg-slate-50" />
-            {mockBrands.map((brand) => (
+            {brands.map((brand) => (
               <DropdownMenuItem 
                 key={brand.id}
                 onClick={() => setSelectedBrandId(brand.id)}

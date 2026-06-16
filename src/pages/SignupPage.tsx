@@ -93,9 +93,10 @@ export function SignupPage() {
         <div className="w-full max-w-md">
           <div className="space-y-8">
             {/* Header */}
-            <div className="text-center space-y-2">
-              <h1 className="text-3xl font-bold text-white">Create Account</h1>
+             <div className="text-center space-y-2">
+              <h1 className="text-3xl font-bold text-white font-display">Create Account</h1>
               <p className="text-slate-400">Join Kontentiq and start managing your brands with AI</p>
+              <p className="text-sm text-slate-500">Sign up with your email to access your dashboard and workspace.</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-5">
