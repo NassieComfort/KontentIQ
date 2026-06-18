@@ -81,10 +81,10 @@ function TypeWriter({ words }: { words: string[] }) {
 
 const features = [
   { icon: Brain,     color: 'from-violet-500 to-purple-600', title: 'AI Content Engine',        desc: 'Generate blog posts, captions, and campaigns for every platform in seconds.' },
-  { icon: Layers,    color: 'from-cyan-500 to-blue-600',     title: 'Multi-Brand Management',   desc: 'Store brand colors, fonts, voice, and assets — all in one place.' },
+  { icon: Layers,    color: 'from-cyan-500 to-blue-600',     title: 'Multi-Brand Management',   desc: 'Store brand colors, fonts, voice, and assets all in one place.' },
   { icon: Zap,       color: 'from-amber-500 to-orange-500',  title: 'Smart Automation',          desc: 'AI agents work 24/7 to create, review, and schedule your content.' },
   { icon: BarChart3, color: 'from-green-500 to-emerald-600', title: 'Performance Analytics',    desc: 'Track engagement, optimize strategy, and grow faster with data.' },
-  { icon: Globe,     color: 'from-pink-500 to-rose-600',     title: 'Multi-Channel Publishing', desc: 'Instagram, LinkedIn, Twitter/X, blogs — publish everywhere at once.' },
+  { icon: Globe,     color: 'from-pink-500 to-rose-600',     title: 'Multi-Channel Publishing', desc: 'Instagram, LinkedIn, Twitter/X, blogs publish everywhere at once.' },
   { icon: Sparkles,  color: 'from-indigo-500 to-violet-600', title: 'Brand Intelligence',       desc: 'AI that learns your brand voice and never breaks consistency.' },
 ];
 
