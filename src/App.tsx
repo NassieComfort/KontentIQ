@@ -26,8 +26,8 @@ export default function App() {
 
   useEffect(() => {
     const root = window.document.documentElement;
-    root.classList.toggle('dark', theme === 'dark');
-    root.classList.toggle('light', theme === 'light');
+    root.classList.remove('light', 'dark');
+    root.classList.add(theme);
   }, [theme]);
 
   return (

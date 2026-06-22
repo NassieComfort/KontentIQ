@@ -1,3 +1,4 @@
+ 
 import React from 'react';
 import { Sparkles, Users, FileText, Calendar, TrendingUp, ArrowUpRight, Plus, Upload } from 'lucide-react';
 import { Button } from '../components/ui/button';

@@ -5,6 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KontentIQ</title>
     <link rel="icon" type="image/png" href="/src/assets/favicon.png" />
+    <script>
+      (function () {
+        try {
+          const stored = localStorage.getItem('ui-storage');
+          if (!stored) return;
+          const data = JSON.parse(stored);
+          const theme = data?.state?.theme;
+          if (theme === 'dark' || theme === 'light') {
+            document.documentElement.classList.remove('light', 'dark');
+            document.documentElement.classList.add(theme);
+          }
+        } catch (error) {
+          // ignore invalid localStorage state
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
